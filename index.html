@@ -277,7 +277,7 @@
             <h2>Have a question or want to work together?</h2>
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="a71a63d4-acf0-45ec-9a85-38b2237ba2a3">
-                <!-- Add spam protection -->
+                <input type="hidden" name="redirect" value="false">
                 <input type="hidden" name="from_name" value="Portfolio Website">
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 
@@ -321,48 +321,52 @@
                 document.getElementById('year').textContent = new Date().getFullYear();
                 window.showPopup = showPopup;
                 window.closePopup = closePopup;
-            });
+
             // Initialize Swiper
-            const swiper = new Swiper(".card-swiper", {
-                centeredSlides: false,
-                spaceBetween: 0,
-                slidesPerView: 'auto'
-            });
+                const swiper = new Swiper(".card-swiper", {
+                    centeredSlides: false,
+                    spaceBetween: 0,
+                    slidesPerView: 'auto'
+                });
 
-            function showPopup(event) {
-                event.preventDefault();
-                const form = event.target.closest('form');
-                const nameInput = form.querySelector('input[name="name"]');
-                const emailInput = form.querySelector('input[name="email"]');
-                const messageInput = form.querySelector('textarea[name="message"]');
+                async function showPopup(event) {
+                    event.preventDefault();
+                    const form = event.target.closest('form');
+                    const formData = new FormData(form);
 
-                // Check if all fields are filled
-                if (nameInput.value && emailInput.value && messageInput.value) {
-                    // Submit the form
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        
+                        // Show popup regardless of response
+                        document.getElementById('successPopup').style.display = 'flex';
+                        document.getElementById('successPopup').classList.add('show');
+                        
+                        // Reset form if successful
                         if (data.success) {
-                            document.getElementById('successPopup').style.display = 'flex';
-                            void document.getElementById('successPopup').offsetWidth;
-                            document.getElementById('successPopup').classList.add('show');
                             form.reset();
                         }
-                    })
-                    .catch(error => console.log('Error:', error));
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
                 }
-            }
 
-            function closePopup() {
-                const popup = document.getElementById('successPopup');
-                popup.classList.remove('show');
-                setTimeout(() => {
-                    popup.style.display = 'none';
-                }, 300); // Match transition duration
-            }
+                function closePopup() {
+                    const popup = document.getElementById('successPopup');
+                    popup.classList.remove('show');
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                    }, 300);
+                }
+
+                // Attach event handlers to window object
+                window.showPopup = showPopup;
+                window.closePopup = closePopup;
+            });
         </script>
 
 </body>
