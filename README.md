@@ -37,7 +37,7 @@ A modern, responsive portfolio website built with HTML, CSS, and JavaScript.
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/portfolio-website.git
+git clone https://github.com/alsonlhy/portfolio-website-portfolio.git
 ```
 
 2. Replace the Web3Forms access key in `website.html`:
