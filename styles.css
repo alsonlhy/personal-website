@@ -303,11 +303,45 @@ section h1::after {
 }
 
 .project-subsection {
-    display: flex;
+    /* display: flex;           add section and remove position when projects are added
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 2rem;
+    padding: 2rem; */
+    position: relative;
+}
+
+/* remove cmg soon when projects are done */
+.coming-soon-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    background-color: rgba(88, 128, 97, 0.9); /* Using your theme color with opacity */
+    padding: 2rem 4rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coming-soon-banner h2 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.coming-soon-banner p {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
 .project-box {
@@ -634,7 +668,9 @@ section h1::after {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Increase z-index to ensure visibility */
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .popup.show {
@@ -647,10 +683,8 @@ section h1::after {
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
-    position: relative;
-    max-width: 90%; /* Adjust for mobile */
+    max-width: 90%;
     width: 400px;
-    margin: 20px;
     transform: scale(0.7);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -684,6 +718,30 @@ section h1::after {
 
 .popup-content button:hover {
     box-shadow: 0 0 15px #815d41;
+}
+
+/* Contact Form Error Message */
+.contact-form input.error,
+.contact-form textarea.error {
+    border-color: #ff4444;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Footer */
