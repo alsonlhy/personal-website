@@ -1,5 +1,7 @@
 :root{
     font-size: 15px;
+    color-scheme: light only;
+    -webkit-color-scheme: light only;
 }
 
 * {
@@ -11,6 +13,8 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* Adjust this value based on the height of your nav bar */
+    color-scheme: light only;
+    -webkit-color-scheme: light only;
 }
 
 body{
@@ -442,6 +446,15 @@ section h1::after {
     width: 50px;
     height: 50px;
     margin-bottom: 1.5rem;
+    object-fit: contain;
+}
+
+.card img[alt="Uni of Michigan icon"] {
+    width: 150px; 
+    height: 100px;  
+    object-fit: contain;
+    margin-bottom: -0.15rem;  
+    margin-top: -1.65rem; 
 }
 
 .card h2 {
@@ -451,6 +464,9 @@ section h1::after {
     line-height: 1.2;
     text-align: left;
     color: #443528;
+    min-height: 2.9rem;
+    display: flex;
+    align-items: flex-start;
 }
 
 .card p {
