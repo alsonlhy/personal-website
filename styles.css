@@ -1,7 +1,5 @@
 :root{
     font-size: 15px;
-    color-scheme: light only;
-    -webkit-color-scheme: light only;
 }
 
 * {
@@ -13,8 +11,6 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* Adjust this value based on the height of your nav bar */
-    color-scheme: light only;
-    -webkit-color-scheme: light only;
 }
 
 body{
