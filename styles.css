@@ -453,6 +453,15 @@ section h1::after {
     margin-top: -1.65rem; 
 }
 
+.card img[alt="Vanderbilt Uni icon"] {
+    width: 200px; 
+    height: 150px;  
+    object-fit: contain;
+    margin-bottom: -1.5rem;  
+    margin-top: -2.5rem; 
+}
+
+
 .card h2 {
     font-size: 1.2rem;
     font-weight: 700;
